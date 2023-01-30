@@ -1,0 +1,154 @@
+/*
+================================================
+BUTTONS ========================================
+================================================
+*/
+
+.button {
+  --paddingX: 2.5em;
+  --paddingY: 1em;
+  --fSize: 1rem;
+  --bgColor: var(--leadTeal700);
+  --hoverColor: var(--leadTeal600);
+  --pressedColor: var(--secondaryColor324E5F);
+  --color: white;
+  --strokeColor: transparent;
+  --strokeWidth: 1px;
+
+  padding: var(--paddingY) var(--paddingX);
+  font-size: var(--fSize);
+  background-color: var(--bgColor);
+  color: var(--color);
+  border: var(--strokeWidth) solid var(--strokeColor);
+  border-radius: 4rem;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  margin-right: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.button__icons + .button__text {
+  margin-left: 1em;
+  padding-right: 0.25em;
+}
+
+.button__text + .button__icons {
+  margin-left: 1em;
+}
+
+.button--small {
+  --paddingX: 1.66em;
+  --paddingY: 1.33em;
+  --fSize: 0.75rem;
+}
+
+.button--big {
+  --paddingX: 2.228em;
+  --paddingY: 0.716em;
+  --fSize: 1.3125rem;
+}
+
+.button--primary {
+  &:hover {
+    --bgColor: var(--hoverColor);
+  }
+
+  &:active {
+    --bgColor: var(--pressedColor);
+    transition: all 0.05s ease-in-out;
+  }
+}
+
+.button--secondary {
+  --bgColor: transparent;
+  --strokeColor: white;
+}
+
+.button--socials {
+  --size: 2.5rem;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 10rem;
+  border: 1px solid var(--secondaryColor);
+  margin-right: 1em;
+  justify-content: center;
+
+  &.button--socials--xl {
+    --size: 4rem;
+  }
+
+  i {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--tertiaryColor);
+
+    i {
+      transform: scale(0.7);
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 33px;
+    height: 33px;
+  }
+}
+
+.button__text-effect {
+  position: relative;
+
+  span {
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+  }
+
+  span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.button:hover,
+.button:focus {
+  .button__text-effect {
+    span:nth-child(1) {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+
+    span:nth-child(2) {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+li:last-of-type .button--socials {
+  margin-right: 0;
+}
+
+.collections-list {
+  display: flex;
+
+  .button--socials {
+    background-color: var(--tertiaryColor);
+    transition: all 0.15s ease-in-out;
+    border: none;
+
+    &:hover,
+    &:focus {
+      background-color: var(--secondaryColor);
+    }
+  }
+}

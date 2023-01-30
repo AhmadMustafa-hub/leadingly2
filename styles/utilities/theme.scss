@@ -1,0 +1,219 @@
+@use "sass:list";
+@use "sass:map";
+
+// =============================================================
+// GRID TEMPLATE
+// =============================================================
+$rows: 1;
+$columns: 12;
+$row-gap: 1rem;
+$column-gap: 1rem;
+$baseFontSize: 12px;
+
+// =============================================================
+// BREAKPOINTS
+// =============================================================
+// -------------------------------------------------------------
+// /!\ we use the mobile first principle!
+// So the media queries will breack when the screen resolution
+// will be higher than your breakpoints.
+// -------------------------------------------------------------
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+$xxxl: 2000px;
+
+// $breakpoints will be used to create media queries & col class
+// -------------------------------------------------------------
+// note: 	if you add or remove some breakpoints vars above,
+//				update the $breakpoints list too below
+// -------------------------------------------------------------
+
+$breakpoints: (
+  "sm": (
+    "breakpoint": #{$sm},
+    "container": 540px,
+    "font-size": 12px,
+  ),
+  "md": (
+    "breakpoint": #{$md},
+    "container": 720px,
+    "font-size": 14px,
+  ),
+  "lg": (
+    "breakpoint": #{$lg},
+    "container": 960px,
+    "font-size": 16px,
+  ),
+  "xl": (
+    "breakpoint": #{$xl},
+    "container": 1140px,
+    "font-size": 18px,
+  ),
+  "xxl": (
+    "breakpoint": #{$xxl},
+    "container": 1320px,
+  ),
+  "custom": (
+    "breakpoint": #{xxxl},
+    "font-size": 21px,
+  ),
+);
+
+// =============================================================
+// COLORS
+// =============================================================
+
+$primaryColor: #37329f;
+$secondaryColor: #423cbd;
+$tertiaryColor: #02a5b7;
+
+$primaryPurpleDark: #332970;
+$primaryPurple: #7a5dd1;
+$primaryBlue: #139bac;
+$primaryCoral: #d9535e;
+
+$orange: #ff9800;
+
+:root {
+  --primaryColor: #{$primaryColor};
+  --secondaryColor: #{$secondaryColor};
+  --tertiaryColor: #{$tertiaryColor};
+
+  // lead COLORS
+  // ===========================================================
+
+  // DarkPurple -----------------
+  --leadDarkPurple700: #302968;
+  --leadDarkPurple600: #4939bf;
+  --leadDarkPurple500: #5544d3;
+  --leadDarkPurple400: #6554e4;
+  --leadDarkPurple300: #7c6cf0;
+  --leadDarkPurple200: #9c8ff8;
+  --leadDarkPurple100: #c6bffd;
+  --leadDarkPurple0: #f6f5ff;
+
+  // TEAL -----------------
+  --leadTeal700: #02a5b7;
+  --leadTeal600: #57ccd9;
+  --leadTeal500: #60d7e5;
+  --leadTeal400: #6ee2ef;
+  --leadTeal300: #82ebf6;
+  --leadTeal200: #a0f2fb;
+  --leadTeal100: #c7f8fe;
+  --leadTeal0: #f5feff;
+
+  // Purple -----------------
+  --leadPurple700: #715fc3;
+  --leadPurple600: #9780ff;
+  --leadPurple500: #9a83ff;
+  --leadPurple400: #a18cff;
+  --leadPurple300: #ad9aff;
+  --leadPurple200: #bfb1ff;
+  --leadPurple100: #d9d0ff;
+  --leadPurple0: #f7f5ff;
+
+  // Pink -----------------
+  --leadPink700: #bb6264;
+  --leadPink600: #ff8082;
+  --leadPink500: #ff8386;
+  --leadPink400: #ff8c8e;
+  --leadPink300: #ff9a9c;
+  --leadPink200: #ffb1b2;
+  --leadPink100: #ffd0d1;
+  --leadPink0: #fff5f5;
+
+  // leadG COLORS
+  // ===========================================================
+
+  // DarkPurple -----------------
+  --leadgDarkPurple700: #1f095e;
+  --leadgDarkPurple600: #5132a6;
+  --leadgDarkPurple500: #613ec1;
+  --leadgDarkPurple400: #7550d9;
+  --leadgDarkPurple300: #8c6aeb;
+  --leadgDarkPurple200: #aa8ef6;
+  --leadgDarkPurple100: #cfbefc;
+  --leadgDarkPurple0: #f8f5ff;
+
+  // Bordeaux -----------------
+  --leadgBordeaux700: #6e1751;
+  --leadgBordeaux600: #a6327f;
+  --leadgBordeaux500: #c13e96;
+  --leadgBordeaux400: #d950ac;
+  --leadgBordeaux300: #eb6ac0;
+  --leadgBordeaux200: #f68ed3;
+  --leadgBordeaux100: #fcbee7;
+  --leadgBordeaux0: #fff5fc;
+
+  // Purple -----------------
+  --leadgPurple700: #4339b4;
+  --leadgPurple600: #796fe8;
+  --leadgPurple500: #8177ef;
+  --leadgPurple400: #8c82f5;
+  --leadgPurple300: #9c93fa;
+  --leadgPurple200: #b3acfd;
+  --leadgPurple100: #d2cefe;
+  --leadgPurple0: #f6f5ff;
+
+  // Blue -----------------
+  --leadgBlue700: #6882c7;
+  --leadgBlue600: #adc3ff;
+  --leadgBlue500: #b0c5ff;
+  --leadgBlue400: #b5c9ff;
+  --leadgBlue300: #becfff;
+  --leadgBlue200: #cbd9ff;
+  --leadgBlue100: #dfe7ff;
+  --leadgBlue0: #f5f8ff;
+
+  // Pink -----------------
+  --leadgPink700: #ab61f0;
+  --leadgPink600: #d3a3ff;
+  --leadgPink500: #d4a6ff;
+  --leadgPink400: #d7acff;
+  --leadgPink300: #dcb6ff;
+  --leadgPink200: #e3c6ff;
+  --leadgPink100: #eedbff;
+  --leadgPink0: #faf5ff;
+
+  // SECONDARY COLORS
+  // ===========================================================
+  --secondaryColor324E5F: #324e5f;
+}
+
+.background {
+  background-color: var(--primaryColor);
+}
+
+.color--primary {
+  color: var(--primaryColor);
+}
+
+.color--secondary {
+  color: var(--secondaryColor);
+}
+
+.color--tertiary {
+  color: var(--tertiaryColor);
+}
+
+// =============================================================
+// EXTENDS AND MIXINS
+// =============================================================
+
+%trans-link {
+  transition: all 0.15s ease-out;
+}
+
+// =============================================================
+// FUNCTIONS
+// =============================================================
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

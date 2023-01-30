@@ -1,0 +1,292 @@
+@use "sass:list";
+@use "sass:map";
+@import "../utilities/theme.scss";
+
+// =============================================================
+// FONTS FAMILY
+// =============================================================
+
+@font-face {
+  font-family: "Chapeau";
+  src: url("Chapeau-Light.woff2") format("woff2"), url("Chapeau-Light.woff") format("woff");
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Chapeau";
+  src: url("Chapeau-Italic.woff2") format("woff2"), url("Chapeau-Italic.woff") format("woff");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Chapeau";
+  src: url("Chapeau-Bold.woff2") format("woff2"), url("Chapeau-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Bold.woff2") format("woff2"), url("Gilroy-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Light.woff2") format("woff2"), url("Gilroy-Light.woff") format("woff");
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Medium.woff2") format("woff2"), url("Gilroy-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("Gilroy-Semibold.woff2") format("woff2"), url("Gilroy-Semibold.woff") format("woff");
+  font-style: normal;
+  font-weight: 500;
+}
+
+/*
+================================================
+ICONS
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+================================================
+*/
+
+@font-face {
+  font-family: "icons";
+  src: url("icomoon.eot") format("embedded-opentype"), url("icomoon.ttf") format("truetype"),
+    url("icomoon.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-store:before {
+  content: "\e906";
+}
+.icon-discord:before {
+  content: "\e93b";
+}
+.icon-ethereum:before {
+  content: "\e93c";
+}
+.icon-instagram:before {
+  content: "\e93d";
+}
+.icon-open-sea:before {
+  content: "\e93e";
+}
+.icon-twitter:before {
+  content: "\e93f";
+}
+.icon-linkedin:before {
+  content: "\eaca";
+}
+.icon-foundation:before {
+  content: "\e900";
+  font-size: 0.65em;
+  line-height: 2em;
+}
+.icon-medium:before {
+  content: "\e907";
+}
+.icon-looksrare:before {
+  content: "\e901";
+}
+.icon-mintable:before {
+  content: "\e902";
+}
+.icon-nifty:before {
+  content: "\e903";
+}
+.icon-rarible:before {
+  content: "\e904";
+  font-size: 0.85em;
+  line-height: 2em;
+}
+.icon-xxyz:before {
+  content: "\e905";
+}
+
+// =============================================================
+// FONTS STYLE & SIZE
+// =============================================================
+
+html {
+  font-size: $baseFontSize;
+  /*============font rendering=============*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  text-rendering: optimizeLegibility;
+}
+
+@each $breakName, $deep in $breakpoints {
+  $b: map-deep-get($breakpoints, $breakName, "breakpoint");
+  $f: map-deep-get($breakpoints, $breakName, "font-size");
+
+  @media (min-width: $b) {
+    html {
+      font-size: #{$f};
+    }
+  }
+}
+
+h1,
+.h1 {
+  font-size: 3.375rem;
+  line-height: 1.25em;
+  font-weight: 400;
+  text-transform: none;
+}
+
+h2,
+.h2 {
+  font-size: 2.5rem;
+  line-height: 1.25em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: none;
+}
+
+h3,
+.h3 {
+  font-size: 2rem;
+  line-height: 1.375em;
+  font-weight: 400;
+}
+
+h4,
+.h4 {
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+h5,
+.h5 {
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+h6,
+.h6 {
+  font-size: 0.875rem;
+  line-height: 1.428em;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.body--large {
+  font-family: "Chapeau", sans-serif;
+  font-size: 1.575rem;
+  line-height: 1.5em;
+  font-weight: 200;
+}
+
+p,
+.body--medium {
+  font-family: "Chapeau", sans-serif;
+  font-size: 1.375rem;
+  line-height: 1.5em;
+  font-weight: 200;
+}
+
+.body--small {
+  font-family: "Chapeau", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  font-weight: 200;
+}
+
+.body--xs-small {
+  font-family: "Chapeau", sans-serif;
+  font-size: 1rem;
+  line-height: 1.333em;
+  font-weight: 200;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+p + p {
+  margin-top: 2rem;
+}
+
+p a {
+  color: white;
+  font-weight: bold;
+}
+
+.list {
+  margin-top: 1rem;
+
+  li {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 0.5rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: white;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    @extend %trans-link;
+
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+  }
+}
+
+// =============================================================
+// UTILS
+// =============================================================
+.text--uppercase {
+  text-transform: uppercase;
+}
+
+.text--bold {
+  font-weight: 600;
+}

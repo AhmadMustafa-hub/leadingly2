@@ -1,0 +1,7 @@
+node_modules/
+yarn.lock
+.next
+.vercel
+public
+src/abis/types
+.history/
